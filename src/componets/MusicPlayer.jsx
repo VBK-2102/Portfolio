@@ -1,16 +1,23 @@
+import React, { useRef, useEffect } from 'react';
+
 const MusicPlayer = () => {
-  return (
-    <div className="my-8">
-      <iframe 
-        src="https://open.spotify.com/embed/track/5RBffvydmhyFFxNZDVv3OF?utm_source=generator" 
-        width="100%" 
-        height="80" 
-        frameBorder="0" 
-        allowtransparency="true" 
-        allow="encrypted-media">
-      </iframe>
-    </div>
-  );
+    const audioRef = useRef(null);
+
+    useEffect(() => {
+        // Play the audio when the component mounts
+        audioRef.current.play().catch(error => {
+            console.error("Error playing audio:", error);
+        });
+    }, []); // Empty dependency array ensures this runs only on mount
+
+    return (
+        <div>
+            <audio ref={audioRef} loop>
+                <source src="/song.mp3" type="audio/mpeg" />
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+    );
 };
 
 export default MusicPlayer;
