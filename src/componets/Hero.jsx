@@ -2,6 +2,7 @@ import React from 'react';
 import { HERO_CONTENT } from "../constants"; 
 import profilePic from "../assets/vbk2.gif";
 import { motion } from "framer-motion";
+import ResumeDownloader from './ResumeDownloader'; // Import the ResumeDownloader component
 
 const container = (delay) => ({
   hidden: { x: -100, opacity: 0 },
@@ -42,6 +43,15 @@ const Hero = () => {
             >
               {HERO_CONTENT}
             </motion.p>
+            {/* Resume downloader button added below HERO_CONTENT */}
+            <motion.div 
+              variants={container(0.6)} 
+              initial="hidden"
+              animate="visible"
+              className="mt-4 pl-20"
+            >
+              <ResumeDownloader /> {/* Button for downloading resume */}
+            </motion.div>
           </div>
         </div>
         <div className="w-full lg:w-1/2 lg:p-8 flex justify-center">

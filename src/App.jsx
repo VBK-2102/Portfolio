@@ -6,6 +6,7 @@ import Experience from './componets/Exprience';
 import Projects from './componets/Projects';
 import Contact from './componets/Contact';
 import MusicPlayer from './componets/MusicPlayer';
+
 const App = () => {
   return (
     <div className="overflow-x-hidden text-neutral-300 antialiased selection:bg-cyan-300 selection:text-cyan-900">
@@ -13,14 +14,16 @@ const App = () => {
       <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
       </div>
       <div className="Container mx-auto px-8">
+      
       <Navbar />
-      <Hero />
+      <Hero /> 
       <About />
       <Technologies />
       <Experience />
       <Projects />
       <Contact/>
       <MusicPlayer />
+      
       </div>
     </div>
   );
