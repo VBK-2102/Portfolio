@@ -22,7 +22,6 @@ const App = () => {
       <Experience />
       <Projects />
       <Contact/>
-      <MusicPlayer />
       
       </div>
     </div>

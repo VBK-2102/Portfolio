@@ -1,35 +1,43 @@
 import React, { useRef, useEffect, useState } from 'react';
 
 const MusicPlayer = () => {
-    const audioRef = useRef(null);
-    const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
-    const togglePlay = () => {
-        if (isPlaying) {
-            audioRef.current.pause();
-        } else {
-            audioRef.current.play().catch(error => {
-                console.error("Error playing audio:", error);
-            });
-        }
-        setIsPlaying(!isPlaying);
+  const playAudio = async () => {
+    try {
+      audioRef.current.volume = 1.0; // Set volume to 100%
+      await audioRef.current.play();
+      setIsPlaying(true);
+    } catch (error) {
+      console.error("Autoplay failed, user interaction may be required:", error);
+    }
+  };
+
+  useEffect(() => {
+    // Attempt to play audio on component mount
+    playAudio();
+
+    // Cleanup function to pause audio when component unmounts
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0; // Reset audio to start
+      }
     };
+  }, []);
 
-    useEffect(() => {
-        audioRef.current.loop = true; // Ensure audio loops
-    }, []);
-
-    return (
-        <div>
-            <audio ref={audioRef}>
-                <source src="/song.mp3" type="audio/mpeg" />
-                Your browser does not support the audio tag.
-            </audio>
-            <button onClick={togglePlay}>
-                {isPlaying ? "Pause" : "Play"}
-            </button>
-        </div>
-    );
+  return (
+    <div className="flex flex-col items-center justify-center mb-4"> {/* Center the audio player */}
+      <audio ref={audioRef} loop>
+        <source src="/song.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+      {!isPlaying && (
+        <button onClick={playAudio} className="mt-2">Play Music</button> // Button styled with margin
+      )}
+    </div>
+  );
 };
 
 export default MusicPlayer;

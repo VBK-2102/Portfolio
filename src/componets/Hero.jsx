@@ -3,6 +3,7 @@ import { HERO_CONTENT } from "../constants";
 import profilePic from "../assets/vbk2.gif";
 import { motion } from "framer-motion";
 import ResumeDownloader from './ResumeDownloader'; // Import the ResumeDownloader component
+import MusicPlayer from './MusicPlayer'; // Import the MusicPlayer component
 
 const container = (delay) => ({
   hidden: { x: -100, opacity: 0 },
@@ -19,11 +20,14 @@ const Hero = () => {
       <div className="flex flex-wrap w-full">
         <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
           <div className="flex flex-col items-center lg:items-start">
+            {/* Music player placed above the name */}
+            <MusicPlayer /> {/* Music player added here */}
+            
             <motion.h1 
               variants={container(0)} 
               initial="hidden"
               animate="visible"
-              className="p-16 text-6xl font-thin tracking-tight lg:mt-16 lg:text-6xl"
+              className="p-16 text-6xl font-thin tracking-tight lg:mt-4 lg:text-6xl"
             >
               Vaibhav Kalungada
             </motion.h1>
