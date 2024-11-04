@@ -24,7 +24,7 @@ const ResumeDownloader = () => {
   return (
     <div>
       <a
-        href="/resume.pdf"
+        href="/Resume.pdf"
         download="Vaibhav_BK's_Resume.pdf"
         style={buttonStyle}
         onMouseEnter={(e) => (e.currentTarget.style.background = hoverStyle.background)}
