@@ -31,14 +31,6 @@ const Hero = () => {
             >
               Vaibhav Kalungada
             </motion.h1>
-            <motion.span 
-              variants={container(0.2)} 
-              initial="hidden"
-              animate="visible"
-              className="bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 bg-clip-text text-4xl tracking-tight text-transparent pl-20"
-            >
-              Data Scientist
-            </motion.span>
             <motion.p 
               variants={container(0.4)} 
               initial="hidden"
