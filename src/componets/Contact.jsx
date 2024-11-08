@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { FaPhoneAlt, FaGithub, FaLinkedin, FaEnvelope, FaInstagram } from "react-icons/fa";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,121 +13,66 @@ const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { triggerOnce: true, threshold: 0.1 });
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2, delayChildren: 0.3 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { duration: 0.5 },
-    },
-  };
-
-  const iconVariants = {
-    hidden: { y: -20, opacity: 0 }, // Icons come from the top
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.5 },
-    },
-  };
-
-  const formVariants = {
-    hidden: { x: -100, opacity: 0 }, // Form comes from the left
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: { duration: 0.5 },
-    },
-  };
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Thank you for reaching out! I'll get back to you soon.");
+    emailjs
+      .send(
+        "service_rk1tuyi", // Replace with your EmailJS Service ID
+        "template_rm26jbd", // Replace with your EmailJS Template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,  // Ensure this is included
+          message: formData.message,
+        },
+        "_gE4G0RSod7gMEDA0" // Replace with your EmailJS User ID
+      )
+      .then(
+        (result) => {
+          console.log("Email sent successfully:", result.text);
+          alert("Thank you for reaching out! I'll get back to you soon.");
+        },
+        (error) => {
+          console.error("Error sending email:", error);
+          alert("There was an error sending your message. Please try again later.");
+        }
+      );
   };
 
   return (
     <div className="border-b border-neutral-900 p-8">
       <motion.h1
-      initial={{ x: 100, opacity: 0 }}
-      animate={isInView ? { x: 0, opacity: 1 } : {}}
-      transition={{ duration: 1, delay: 0.2 }}
-      className="my-20 text-center text-4xl">
-        Contact<motion.span  
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"} className="text-neutral-500"> Me</motion.span>
-      </motion.h1>
-
-      {/* Contact Icons */}
-      <motion.div
-        ref={ref}
-        className="flex justify-center space-x-6 mb-8 text-2xl text-neutral-400"
-        variants={containerVariants}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
+        initial={{ x: 100, opacity: 0 }}
+        animate={isInView ? { x: 0, opacity: 1 } : {}}
+        transition={{ duration: 1, delay: 0.2 }}
+        className="my-20 text-center text-4xl"
       >
-        {[
-          {
-            href: "tel:+9741721110",
-            ariaLabel: "Phone",
-            icon: <FaPhoneAlt />,
-          },
-          {
-            href: "https://instagram.com/yourInstagramHandle",
-            ariaLabel: "Instagram",
-            icon: <FaInstagram size={20} />,
-          },
-          {
-            href: "mailto:vaibhavbkalungada@gmail.com",
-            ariaLabel: "Email",
-            icon: <FaEnvelope />,
-          },
-          {
-            href: "https://linkedin.com/in/vaibhav-kalungada-844790223/",
-            ariaLabel: "LinkedIn",
-            icon: <FaLinkedin />,
-          },
-          {
-            href: "https://github.com/VBK-2102/",
-            ariaLabel: "GitHub",
-            icon: <FaGithub />,
-          },
-        ].map((link, index) => (
-          <motion.a
-            key={index}
-            href={link.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={link.ariaLabel}
-            className="hover:text-purple-500"
-            variants={iconVariants} // Apply icon animation
-          >
-            {link.icon}
-          </motion.a>
-        ))}
-      </motion.div>
+        Contact
+        <motion.span
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="text-neutral-500"
+        >
+          {" "}
+          Me
+        </motion.span>
+      </motion.h1>
 
       {/* Contact Form */}
       <motion.form
         onSubmit={handleSubmit}
         className="max-w-lg mx-auto p-4"
-        variants={formVariants} // Apply form animation
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
       >
         <div className="mb-4">
-          <label htmlFor="name" className="block text-sm font-medium text-neutral-400 mb-1">Name</label>
+          <label
+            htmlFor="name"
+            className="block text-sm font-medium text-neutral-400 mb-1"
+          >
+            Name
+          </label>
           <input
             type="text"
             id="name"
@@ -139,7 +85,12 @@ const Contact = () => {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="email" className="block text-sm font-medium text-neutral-400 mb-1">Email</label>
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-neutral-400 mb-1"
+          >
+            Email
+          </label>
           <input
             type="email"
             id="email"
@@ -152,7 +103,12 @@ const Contact = () => {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="message" className="block text-sm font-medium text-neutral-400 mb-1">Message</label>
+          <label
+            htmlFor="message"
+            className="block text-sm font-medium text-neutral-400 mb-1"
+          >
+            Message
+          </label>
           <textarea
             id="message"
             name="message"
