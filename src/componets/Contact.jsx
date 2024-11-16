@@ -180,7 +180,7 @@ const Contact = () => {
 
         <button
           type="submit"
-          className="w-full rounded-lg bg-cyan-500 py-2 text-sm font-medium text-neutral-900 hover:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-300"
+          className="w-full rounded-lg bg-cyan-500 py-2 text-sm font-medium text-neutral-900 hover:bg-white-600 focus:outline-none focus:ring-2 focus:ring-cyan-300"
         >
           Send Message
         </button>
