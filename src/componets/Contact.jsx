@@ -9,7 +9,6 @@ const Contact = () => {
     email: "",
     message: "",
   });
-
   const ref = useRef(null);
   const isInView = useInView(ref, { triggerOnce: true, threshold: 0.1 });
 
