@@ -37,7 +37,6 @@ const Hero = () => {
               animate="visible"
               className="my-2 max-w-xl py-6 font-light tracking-tighter pl-20"
             >
-              {HERO_CONTENT}
             </motion.p>
             {/* Resume downloader button added below HERO_CONTENT */}
             <motion.div 
