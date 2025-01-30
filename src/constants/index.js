@@ -10,10 +10,10 @@ export const ABOUT_TEXT = `I am a dedicated and versatile Computer Science Engin
 
 export const EXPERIENCES = [
   {
-    year: "11th Oct 2023-11th Nov 2023",
+    year: "01st Dec 2024- Present",
     role: "Intern",
-    company: "TEQUED Labs",
-    description: `Completed coursework that covered cybersecurity fundamentals, ethical hacking practices, and Python programming, enhancing skills in securing systems and understanding vulnerabilities.`,
+    company: "RGESIndia",
+    description: `Risk Guard Enterprise Solutions (OPC) Private Limited, Hyderabad, Telangana, India ,Conducted data collection, analysis, and documentation for various projects.Assisted in study design and conducted literature reviews.Prepared comprehensive reports to share research findings with stakeholders.Contributed to actionable insights by analyzing data and presenting results effectively.`  ,
     technologies: ["Cybersecurity", "Ethical Hacking"],
   },
   {
@@ -24,12 +24,19 @@ export const EXPERIENCES = [
     technologies: ["Python","Python Libraries" ],
   },
   {
-    year: "01th May 2024-5th June 2024",
+    year: "01st May 2024-5th June 2024",
     role: "Intern",
     company: "Internship Studio",
     description: `Acquired practical experience in data analytics, focusing on methodologies for data collection, cleaning, and visualization to extract insights and support decision-making processes.`,
     technologies: ["Python", "Pandas", "Scikit-Learn","Numpy","MySQL"],
   },
+  { 
+    year: "11th Oct 2023-11th Nov 2023",
+    role: "Intern",
+    company: "TEQUED Labs",
+    description: `Completed coursework that covered cybersecurity fundamentals, ethical hacking practices, and Python programming, enhancing skills in securing systems and understanding vulnerabilities.`,
+    technologies: ["Cybersecurity", "Ethical Hacking"],
+  }
 ];
 
 export const PROJECTS = [
