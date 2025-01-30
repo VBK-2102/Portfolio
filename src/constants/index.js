@@ -14,7 +14,7 @@ export const EXPERIENCES = [
     role: "Intern",
     company: "RGESIndia",
     description: `Risk Guard Enterprise Solutions (OPC) Private Limited, Hyderabad, Telangana, India ,Conducted data collection, analysis, and documentation for various projects.Assisted in study design and conducted literature reviews.Prepared comprehensive reports to share research findings with stakeholders.Contributed to actionable insights by analyzing data and presenting results effectively.`  ,
-    technologies: ["Cybersecurity", "Ethical Hacking"],
+    technologies: ["Web Development", "Data analysis","Project Management","Research"],
   },
   {
     year: "30th Oct 2023-15th Dec 2023",
